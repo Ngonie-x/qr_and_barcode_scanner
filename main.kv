@@ -1,0 +1,50 @@
+ScreenManagement:
+    MainScreen:
+    QRScreen:
+
+<MainScreen>:
+    name: 'mainscreen'
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDToolbar:
+            title: 'Sub Menu Food Packaging'
+            left_action_items: [["menu", lambda x: app.callback()]]
+            right_action_items: [["camera", lambda x: app.get_qrcode()]]
+        
+        MDFloatLayout:
+            size_hint: 1, .9 
+
+            MDTextField:
+                id: qrinput
+                size_hint: .8, None
+                pos_hint: {'center_x': .5, 'y': .9}
+                hint_text: 'Not from the food group'
+                mode: 'rectangle'
+                # on_focus: app.get_qrcode()
+
+            ScrollView:
+                pos_hint: {'center_x':.5, 'y': .1}
+                size_hint: .9, .8
+
+                MDList:
+                    # list containing read qrcode data list items
+                    id: qrlist
+
+<QRScreen>:
+    name: 'qrscreen'
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDToolbar:
+            title: 'Scan QR Code'
+            left_action_items: [["keyboard-backspace", lambda x: app.return_to_main()]]
+
+        CameraView:
+            size_hint: 1, .9
+            id: camera_view
+
+        MDLabel:
+            size_hint: .3, .1
+            id: qrcode
+            pos_hint: {'center_x': .5}
