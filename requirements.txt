@@ -1,0 +1,6 @@
+Kivy==2.0.0
+kivymd==0.104.2
+numpy==1.21.1
+opencv-python==4.5.3.56
+Pillow==8.1.1
+pyzbar==0.1.8
